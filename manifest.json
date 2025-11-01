@@ -2,15 +2,23 @@
   "name": "Codeforces.org redirector",
   "description": "Redirects requests from codeforces.org to codeforces.com/codeforces.org, making Codeforces work again",
   "version": "0.1",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "permissions": [
     "webRequest",
-    "webRequestBlocking",
+    "webRequestBlocking"
+  ],
+  "host_permissions": [
     "*://userpic.codeforces.org/*",
     "*://codeforces.com/*",
     "*://codeforces.org/*"
   ],
   "background": {
-    "scripts": ["background.js"]
-  }
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://codeforces.org/*", "*://*.codeforces.org/*"],
+      "js": ["source.js"]
+    }
+  ]
 }
