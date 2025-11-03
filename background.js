@@ -1,13 +1,33 @@
-chrome.webRequest.onBeforeRequest.addListener(
-  function (details) {
-    if (details.url.includes("://codeforces.org")) {
-      return {
-        redirectUrl: details.url.replace("://codeforces.org", "://codeforces.com/codeforces.org")
+chrome.declarativeNetRequest.updateDynamicRules({
+  addRules: [
+    {
+      id: 1,
+      priority: 1,
+      action: {
+        type: "redirect",
+        redirect: {
+          regexSubstitution: "https://codeforces.com/codeforces.org/"
+        }
+      },
+      condition: {
+        regexFilter: "^https://codeforces\\.org/",
+        resourceTypes: ["stylesheet", "script", "image"]
+      }
+    },
+    {
+      id: 2,
+      priority: 1,
+      action: {
+        type: "redirect",
+        redirect: {
+          regexSubstitution: "https://codeforces.com/userpic.codeforces.org/"
+        }
+      },
+      condition: {
+        regexFilter: "^https://userpic\\.codeforces\\.org/",
+        resourceTypes: ["stylesheet", "script", "image"]
       }
     }
-    if (details.url.includes("://userpic.codeforces.org")) {
-      return {
-        redirectUrl: details.url.replace("://userpic.codeforces.org", "://codeforces.com/userpic.codeforces.org")
-      }
-    }
-  }, { urls: ["*://userpic.codeforces.org/*", "*://codeforces.org/*"], types: ["stylesheet", "script", "image"] }, ["blocking"]);
+  ],
+  removeRuleIds: [1, 2]
+});

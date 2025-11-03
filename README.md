@@ -7,7 +7,7 @@ Codeforces при загрузке подгружает ресурсы с сер
 
 ## Установка
 
-Склонируйте репозиторий ИЛИ перейдите на страницу [Releases](https://github.com/Mrksist/kf-redirect-ext/releases), скачайте архив `Source code (zip)`, распакуйте в любую папку
+Склонируйте репозиторий ИЛИ перейдите на страницу [Releases](https://github.com/Mrksist/kf-redirect-ext/releases), скачайте архив `source-code.zip`, распакуйте в любую папку
 
 В Chrome перейдите в раздел `chrome://extensions`, там включите режим разработчика и нажмите `Load unpacked`. Выберите папку, в которую распаковали архив. Включите расширение
 
